@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Permanent+Marker&display=swap');
+
+
+* {
+    color: green;
+    background-color: black;
+}
+
+header {
+    text-align: center;
+    padding-top: .1em;
+    border: 7px double green;
+}
+
+main {
+    display: flex;
+    align-items: center;    
+    justify-content: center;;
+}
+
+.board {
+    border: 5px solid green;
+    width: 60vw;
+    height: 60vh;
+}
+
+footer {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+#author {
+    font-family: 'Berkshire Swash';
+    color:  green;
+}
+
+a {
+    text-decoration: none;
+    color:  green;
+}
