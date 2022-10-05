@@ -1,41 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
-
-* {
-    color: green;
-    background-color: black;
-}
+/* * {
+    background-color: lightgrey;
+} */
 
 header {
+    font-family: 'Anton';
+    color: blue;
+    background-color: lightgrey;
     text-align: center;
     padding-top: .1em;
-    border: 7px double green;
+    border: 7px solid blue;
+    block-size: fit-content;
+}
+
+.red {
+    color: red;
 }
 
 main {
     display: flex;
     align-items: center;    
-    justify-content: center;;
+    justify-content: center;
+    background-color: #ebe134;
+    border: 7px solid white;
 }
 
 .board {
     border: 10px solid lightcyan;
-    width: 70vw;
-    height: 60vh;
+    height: 600px;
+    width: 700px;
     background-color: blue;
+}
+
+/* media query for mobile screen */
+@media all and (max-width: 1000px) {
+    .board {
+        max-height: 257px;
+        max-width: 300px;
+    }
 }
 
 footer {
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
+    background: #ebe134;
 }
 
 #author {
     font-family: 'Berkshire Swash';
-    color:  green;
 }
 
 a {
     text-decoration: none;
-    color:  green;
+    color:  blue;
 }
