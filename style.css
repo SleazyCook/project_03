@@ -37,9 +37,25 @@ main {
 
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* width: 
+    height: */
+}
+
+.col {
+    border: 2px solid black;
+    margin: 2%;
+}
+
 /* Game Board */
 .board {
     border: 10px solid lightblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 540px;
     width: 630px;
     background-color: blue;
