@@ -27,12 +27,12 @@ h1 {
     background-color: black;
 }
 
-.red {
+.red-text {
     color: red;
 }
 
 main {
-    border: 5px solid blue;
+    /* border: 5px solid blue; */
     border-radius: 5px;
 
 }
@@ -51,7 +51,7 @@ main {
     /* flex-direction: column; */
     width: fit-content;
     height: fit-content;
-    border: 5x solid red;
+    /* border: 5x solid red; */
     justify-content: space-between;
     padding: 0px;
     column-gap: 5em;
@@ -65,7 +65,7 @@ main {
     border: 5px solid white;
     /* align-self: flex-end; */
 }
-
+/* ------------------------------ */
 /* media query for mobile screen */
 @media all and (max-width: 800px) {
     .board {
@@ -74,14 +74,18 @@ main {
     }
 
     footer {
-        margin-bottom: 25em;
+        margin-bottom: 13em;
+        color: lightblue;
     }
 }
+/* ------------------------------ */
 
 /* Footer for author */
 footer {
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
+    color: lightblue;
+    margin-top: 2em;;
 }
 
 #author {
@@ -90,5 +94,5 @@ footer {
 
 a {
     text-decoration: none;
-    color: black;
+    color: lightblue;
 }
