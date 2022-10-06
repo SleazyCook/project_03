@@ -32,36 +32,42 @@ h1 {
 }
 
 main {
-    display: flex;
-    align-items: center;    
-    justify-content: center;
     border: 5px solid blue;
     border-radius: 5px;
-    flex-direction: row;
 
 }
 
 /* Game Board */
 .board {
     border: 10px solid lightblue;
-    height: 600px;
-    width: 700px;
+    height: 540px;
+    width: 630px;
     background-color: blue;
 }
 
 /* Player name and score */
 .players-box {
-    flex-direction: row;
-    border: red;
+    display: flex;
+    /* flex-direction: column; */
+    width: fit-content;
+    height: fit-content;
+    border: 5x solid red;
+    justify-content: space-between;
+    padding: 0px;
+    column-gap: 5em;
 }
 
 .player {
+    display: flex;
     flex-direction: column;
-    border: white;
+    width: fit-content;
+    height: fit-content;
+    border: 5px solid white;
+    /* align-self: flex-end; */
 }
 
 /* media query for mobile screen */
-@media all and (max-width: 1000px) {
+@media all and (max-width: 800px) {
     .board {
         max-height: 257px;
         max-width: 300px;

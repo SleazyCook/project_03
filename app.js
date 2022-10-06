@@ -1,12 +1,21 @@
 //select option: 1 or 2 players
 //enter player(s): names (player 2 defaults to computer)
-//player order is randomized
 //players take turns playing the game
 //drop a chip into a column to complete turn
 //you cannot drop a chip into a completed column
 //winning result(display winner name) and a tied result
 //if a player plays against a computer, allow the computer to play to win
 
+//define 2 players
+let playerOne = "red";
+let playerTwo = "yellow";
+//randomize first player
+let currentPlayer = Math.floor(Math.random() *1) ++;
+//reference board from gameState
+let gameBoard = gameState.gameBoard;
+
+
+// game state 
 let gameState = 
 {
     gameBoard: [ 
