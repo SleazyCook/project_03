@@ -7,19 +7,34 @@
 //winning result(display winner name) and a tied result
 //if a player plays against a computer, allow the computer to play to win
 
-// state
-// let state = 
-// {
-//     totalNumofResources: 0,
-//     numOfPassiveResourcesGenerated: 0,
-//     gamBoard: 
-//     [
-//         [undefined, undefined, undefined, undefined, undefined, undefined, undefined],
-//         [undefined, undefined, undefined, undefined, undefined, undefined, undefined],
-//         [undefined, undefined, undefined, undefined, undefined, undefined, undefined],
-//     ],
-//     intervalLoop: lalksjdf
-// }
+let gameState = 
+{
+    gameBoard: [ 
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+    ],
+    move: function (character, rowNum, colNum) { //position = tableTopGame.move(character, y, x);
+        this.gameBoard[rowNum][colNum] = character;
+    },
+    clear: function () {
+        for (let rowNum = 0; rowNum < this.gameBoard.length; rowNum++) {
+            this.gameBoard[rowNum];
+            for (let colNum = 0; colNum < this.gameBoard[rowNum].length; colNum++) {
+                if (this.gameBoard[rowNum][colNum] != null) {
+                    this.gameBoard[rowNum][colNum] = null;
+                }
+            }
+        }
+    return gameBoard;
+    } 
+}
+
+console.log(gameState.gameBoard);
 
 /*
 Common Requirements (30%):

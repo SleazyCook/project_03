@@ -1,18 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Permanent+Marker&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
-/* * {
-    background-color: lightgrey;
-} */
+body {
+    background-color: #5a83a3;
+    background-image: linear-gradient(to bottom right, lightblue, rgb(70, 70, 180));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
+/* Title Header */
 header {
     font-family: 'Anton';
-    color: blue;
-    background-color: lightgrey;
-    text-align: center;
-    padding-top: .1em;
-    border: 7px solid blue;
-    block-size: fit-content;
+    color: white;
+    background-color: black;
+    padding: 0 1em 0 1em;
+    margin: 1em;
+    border: 7px solid white;
+    border-radius: 1em;
+    max-width: fit-content;
+}
+
+h1 {
+    background-color: black;
 }
 
 .red {
@@ -23,15 +35,29 @@ main {
     display: flex;
     align-items: center;    
     justify-content: center;
-    background-color: #ebe134;
-    border: 7px solid white;
+    border: 5px solid blue;
+    border-radius: 5px;
+    flex-direction: row;
+
 }
 
+/* Game Board */
 .board {
-    border: 10px solid lightcyan;
+    border: 10px solid lightblue;
     height: 600px;
     width: 700px;
     background-color: blue;
+}
+
+/* Player name and score */
+.players-box {
+    flex-direction: row;
+    border: red;
+}
+
+.player {
+    flex-direction: column;
+    border: white;
 }
 
 /* media query for mobile screen */
@@ -40,12 +66,16 @@ main {
         max-height: 257px;
         max-width: 300px;
     }
+
+    footer {
+        margin-bottom: 25em;
+    }
 }
 
+/* Footer for author */
 footer {
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
-    background: #ebe134;
 }
 
 #author {
@@ -54,5 +84,5 @@ footer {
 
 a {
     text-decoration: none;
-    color:  blue;
+    color: black;
 }
