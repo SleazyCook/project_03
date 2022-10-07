@@ -86,7 +86,7 @@ main {
 }
 
 .red {
-    background-color: red;
+    background-color: rgb(228, 61, 61);
 }
 
 .yellow {
@@ -102,18 +102,23 @@ main {
     }
     
     .board {
-        height: 258px; /* divided by 5 = 43*/
-        width: 301px; /* divided by 7 = 43*/
+        max-height: 258px; /* divided by 5 = 43*/
+        max-width: 301px; /* divided by 7 = 43*/
         background-color: red;
     }
 
     .row {
-    height: 43px;
-    width: 301px;
+        height: 43px;
+        width: 301px;
     }
     .col {
         height: 28px;
         width: 43px;
+    }
+
+    .players-box {
+        margin-left: 155px;
+        flex-direction: column;
     }
 
     footer {
