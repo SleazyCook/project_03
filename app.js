@@ -150,8 +150,11 @@ function turnFunc (event) {
 }
 gameBoardContainer.addEventListener('click', turnFunc);
 
+// -------------reset-board---------------------------------
 let resetGameButton = document.getElementById('reset-bttn')
 resetGameButton.addEventListener('click', gameState.clear)
+
+
 // continue requirements, write out pseudo 
 // worry about ai player last
 

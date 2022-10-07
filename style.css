@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
+/* General Styling */
 body {
     background-color: #5a83a3;
     background-image: linear-gradient(to bottom right, lightblue, rgb(70, 70, 180));
@@ -35,6 +36,27 @@ main {
     /* border: 5px solid blue; */
     border-radius: 5px;
 
+}
+
+/* Name Input Boxes */
+.name-input-container {
+    text-align: center;
+    margin-top: 1em;
+    color: white;
+}
+
+#player-one-display-name {
+    font-family: 'Permanent Marker';
+    font-size: larger;
+}
+
+#player-two-display-name {
+    font-family: 'Permanent Marker';
+    font-size: larger;
+}
+
+.hidden {
+    display: none;
 }
 
 /* Game Board */
@@ -102,26 +124,6 @@ main {
     background-color: rgb(173, 190, 196);
     border: 8px solid rgb(4, 4, 116);
     padding: 0 1em 0 1em;
-}
-
-.name-input-container {
-    text-align: center;
-    margin-top: 1em;
-    color: lightblue;
-}
-
-#player-one-display-name {
-    font-family: 'Permanent Marker';
-    font-size: larger;
-}
-
-#player-two-display-name {
-    font-family: 'Permanent Marker';
-    font-size: larger;
-}
-
-.hidden {
-    display: none;
 }
 
 .reset-container {
