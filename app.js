@@ -10,6 +10,9 @@ Developed by Drewford`)
 
 // game state - define board, players, player score, winning condition
 //      , movement, and how to clear the game
+
+
+
 let gameState = 
 {
     //key: gameboard
@@ -22,8 +25,10 @@ let gameState =
         [null, null, null, null, null, null, null],
     ],
     //key: players
-    players: ['NameOfPlayerOne', 'NameOfPlayerTwo'],
-    //key: scores
+    playerNames: ['NameOfPlayerOne', 'NameOfPlayerTwo'],
+    playerOne: 'red',
+    playerTwo: 'yellow',
+    currentPlayer: Math.random() > 0.5 ? 'red' : 'yellow', //turnary operator (like if, else)
     playerScores: [0, 0],
     //key: winning conditions
     allWinningConditions: [],
@@ -41,7 +46,7 @@ let gameState =
                 }
             }
         }
-    return gameBoard;
+    return gameState.gameBoard;
     } 
 }
 
@@ -50,9 +55,11 @@ let gameState =
 // How to turn your gameState JS into HTML
 // grab the html location to render HTML
 let gameBoardContainer = document.getElementById('board');
+
 // incorporate domContentLoaded event into a trigger
 // write a function to later callback  when our DOMContentLoaded event occurs
 function renderGameBoard () {
+    gameBoardContainer.innerHTML = '';
     // create a loop to create multiple rows based the value of the gameboard from gameState
     for (let numOfRowsMade = 0; numOfRowsMade < gameState.gameBoard.length; numOfRowsMade++) {
         // turn each row into a div in html
@@ -68,7 +75,8 @@ function renderGameBoard () {
             let newColElement = document.createElement('div');
             // add the css class .col to each col cell
             newColElement.classList.add('col');
-
+            // add an identifying class to each column
+            newColElement.classList.add('col-' + numOfColsMade);
             // if the current cell from the game board is anything over than 'null'...
             if (currentJSRow[numOfColsMade] != null) {
                 // use the content provided by the game baord
@@ -76,7 +84,7 @@ function renderGameBoard () {
                 // otherwise...
             } else {
                 //use the content 'Empty'
-                newColElement.textContent = 'Empty';
+                newColElement.textContent = '';
             }
             //append col cell to row element
             newRowElement.appendChild(newColElement);
@@ -90,14 +98,45 @@ function renderGameBoard () {
 //When the DOM is loaded up, call back to the function renderGameBoard
 //   to add the JS elements to HTML when the webpage is loaded for the first time
 document.addEventListener('DOMContentLoaded', renderGameBoard);
+renderGameBoard()
 
 
-//define 2 players
-let playerOne = "red";
-let playerTwo = "yellow";
-//randomize first player
-// let currentPlayer = Math.floor(Math.random() *1) ++;
-//reference board from gameState
-let gameBoard = gameState.gameBoard;
 
-console.log(gameBoard);
+
+/*
+player one : .red
+player two: .yellow
+null = .null 
+ */
+
+/*
+To Do:
+Enter our names and have them displayed
+(two input tags- create input tag through html, toggle to hidden upon completion through js (add a class/display: none) if null is entered, playername is Computer
+use lecture notes ^^ 
+
+2- random starting order (completed in gameState)
+
+3 - take turns by dropping our chip into a column on the grid */
+function turnFunc (event) {
+    //asdfasf
+    if (event.target.classList[0] == 'col') {
+        let colIndexStr = event.target.classList[1];
+        let colIndex = Number(colIndexStr[4]); //use Number() to convert string to number, use index to remove "col-"
+        console.log(colIndex);
+        //loop through the row index
+        for (let i = gameState.gameBoard.length - 1; i >= 0; i--) {
+            if (gameState.gameBoard[i][colIndex] == null) {
+                gameState.gameBoard[i][colIndex] = gameState.currentPlayer;
+                gameState.currentPlayer = gameState.currentPlayer == 'yellow' ? 'red' : 'yellow';
+                break;
+            }
+        }
+        // if the current index == null,
+        //  
+        renderGameBoard();
+    } 
+}
+gameBoardContainer.addEventListener('click', turnFunc);
+// continue requirements, write out pseudo 
+// worry about ai player last

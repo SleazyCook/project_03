@@ -37,28 +37,48 @@ main {
 
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    /* width: 
-    height: */
-}
-
-.col {
-    border: 2px solid black;
-    margin: 2%;
-}
-
 /* Game Board */
-.board {
-    border: 10px solid lightblue;
+#board {
+    border: 10px solid rgb(4, 4, 116);
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 540px;
     width: 630px;
     background-color: blue;
+    row-gap: 0px;
+    column-gap: 0px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 90px;
+    width: 630px;
+}
+
+.col {
+    border: 2px solid black;
+    border-radius: 50%;
+    margin: 2%;
+    height: 60px;
+    width: 90px;
+    column-gap: 0px;
+    /* testing colors for empty, red, and yellow */
+    background-color: lightblue;
+}
+/* https://css-tricks.com/almanac/properties/c/clip-path/ */
+.null {
+    background-color: lightblue;
+}
+
+.red {
+    background-color: rgb(161, 62, 62);
+}
+
+.yellow {
+    background-color: rgb(231, 231, 114);
 }
 
 /* Player name and score */
@@ -87,6 +107,7 @@ main {
     .board {
         max-height: 257px;
         max-width: 300px;
+        background-color: red;
     }
 
     footer {
