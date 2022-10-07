@@ -93,6 +93,36 @@ main {
     background-color: rgb(245, 245, 81);
 }
 
+/* ----------------------------------- */
+/* MEDIA QUERY FOR MOBILE SCREEN------ */
+/* smaller board&& top/bottom margins- */
+@media all and (max-width: 800px) {
+    header {
+        margin-top: 10em;
+    }
+    
+    .board {
+        height: 258px; /* divided by 5 = 43*/
+        width: 301px; /* divided by 7 = 43*/
+        background-color: red;
+    }
+
+    .row {
+    height: 43px;
+    width: 301px;
+    }
+    .col {
+        height: 28px;
+        width: 43px;
+    }
+
+    footer {
+        margin-bottom: 13em;
+        color: lightblue;
+    }
+}
+/* ----------------------------------- */
+
 /* Player name and score */
 .players-box {
     display: flex;
@@ -163,19 +193,3 @@ a {
     text-decoration: none;
     color: lightblue;
 }
-
-/* ------------------------------ */
-/* media query for mobile screen */
-@media all and (max-width: 800px) {
-    .board {
-        max-height: 257px;
-        max-width: 300px;
-        background-color: red;
-    }
-
-    footer {
-        margin-bottom: 13em;
-        color: lightblue;
-    }
-}
-/* ------------------------------ */
