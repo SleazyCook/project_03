@@ -49,6 +49,11 @@ main {
     display: none;
 }
 
+.board-container {
+    display: flex;
+    justify-content: center;;
+}
+
 /* Game Board */
 #board {
     border: 5px solid rgb(4, 4, 116);
@@ -102,10 +107,10 @@ main {
         margin-top: 10em;
     }
     
-    .board {
-        max-height: 258px; /* divided by 5 = 43*/
+    #board {
+        max-height: 258px; /* divided by 6 = 43*/
         max-width: 301px; /* divided by 7 = 43*/
-        background-color: red;
+        align-self: center;
     }
 
     .row {
@@ -118,7 +123,6 @@ main {
     }
 
     .players-box {
-        margin-left: 155px;
         flex-direction: column;
     }
 

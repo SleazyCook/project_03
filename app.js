@@ -28,7 +28,8 @@ let gameState =
                 // if the current cell isn't empty (null)
                 if (gameState.gameBoard[r][c] != null) {
                     //and if 4 in a row match (either red or yellow)
-                    if (gameState.gameBoard[r][c] == gameState.gameBoard[r][c++] && gameState.gameBoard[r][c++] && gameState.gameBoard[r][c+2] && gameState.gameBoard[r][c+2] && gameState.gameBoard[r][c+2] == gameState.gameBoard[r][c+ 3]) {
+                    let currCell = gameState.gameBoard[r][c] 
+                    if (currCell == gameState.gameBoard[r][c+1] && gameState.gameBoard[r][c++] == gameState.gameBoard[r][c+2] && gameState.gameBoard[r][c+2] == gameState.gameBoard[r][c+ 3]) {
                         //set a winner
                         gameState.setWinner(r, c);
                         //save this data to gameState
@@ -179,7 +180,7 @@ function turnFunc (event) {
         // if the current index == null,
         //  
         renderGameBoard();
-        // gameState.checkForWinner(); 
+        gameState.checkForWinner(); 
     } 
 }
 gameBoardContainer.addEventListener('click', turnFunc);
