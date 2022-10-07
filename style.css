@@ -18,7 +18,6 @@ header {
     color: white;
     background-color: black;
     padding: 0 1em 0 1em;
-    margin-top: -2em;
     border: 7px solid white;
     border-radius: 1em;
     max-width: fit-content;
@@ -108,6 +107,7 @@ main {
 .name-input-container {
     text-align: center;
     margin-top: 1em;
+    color: lightblue;
 }
 
 #player-one-display-name {
