@@ -118,6 +118,7 @@ main {
 .player {
     display: flex;
     font-family: 'Anton';
+    text-align: center;
     flex-direction: column;
     width: 200px;
     height: fit-content;
