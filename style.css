@@ -86,11 +86,11 @@ main {
 }
 
 .red {
-    background-color: rgb(161, 62, 62);
+    background-color: rgb(179, 23, 23);
 }
 
 .yellow {
-    background-color: rgb(231, 231, 114);
+    background-color: rgb(245, 245, 81);
 }
 
 /* Player name and score */
@@ -139,6 +139,12 @@ main {
 .reset-container {
     padding: 1em;
     text-align: center;
+}
+
+#reset-bttn {
+    color: lightblue;
+    background-color: blue;
+    border-radius: 5px;
 }
 
 /* Footer for author */

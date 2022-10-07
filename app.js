@@ -23,14 +23,15 @@ let gameState =
     allWinningConditions: [],
     //method function: clear the game baord
     clear: function () {
-        for (let rowNum = 0; rowNum < this.gameBoard.length; rowNum++) {
-            this.gameBoard[rowNum];
-            for (let colNum = 0; colNum < this.gameBoard[rowNum].length; colNum++) {
-                if (this.gameBoard[rowNum][colNum] != null) {
-                    this.gameBoard[rowNum][colNum] = null;
+        for (let rowNum = 0; rowNum < gameState.gameBoard.length; rowNum++) {
+            gameState.gameBoard[rowNum];
+            for (let colNum = 0; colNum < gameState.gameBoard[rowNum].length; colNum++) {
+                if (gameState.gameBoard[rowNum][colNum] != null) {
+                    gameState.gameBoard[rowNum][colNum] = null;
                 }
             }
         }
+    renderGameBoard();
     return gameState.gameBoard;
     } 
 }
@@ -144,13 +145,34 @@ function turnFunc (event) {
         // if the current index == null,
         //  
         renderGameBoard();
+        // checkForWinner(); (check each direction using loops for possible win)
     } 
 }
 gameBoardContainer.addEventListener('click', turnFunc);
 
+
+
+
+
+
+
+
+
 // RESET BOARD--------------------------------------------------
 let resetGameButton = document.getElementById('reset-bttn')
 resetGameButton.addEventListener('click', gameState.clear)
+
+
+
+
+
+
+
+
+
+
+
+
 
 // CHECK FOR WINNER----------------------------------------------------
 //how to determine a winning condition
