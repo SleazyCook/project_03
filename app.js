@@ -20,13 +20,38 @@ let gameState =
     currentPlayer: Math.random() > 0.5 ? 'red' : 'yellow', //ternary operator (like if, else)
     playerScores: [0, 0],
     //key: winning conditions
-    // checkLine: function(a, b, c, d) {
-    //     return ((a))
-    // }
-    // checkForWinner: function () {
-
-    // }
-    //method function: clear the game baord
+    checkForWinner: function () {
+        //horizontally loop through the rows
+        for (let r = 0; r < rows; r++) {
+            // loop through the cells in each row
+            for (let c = 0; c < columns; c++) {
+                // if the current cell isn't empty (null)
+                if (gameState.gameBoard[r][c] != null) {
+                    //and if 4 in a row match (either red or yellow)
+                    if (gameState.gameBoard[r][c] == gameState.gameBoard[r][c++] && gameState.gameBoard[r][c++] && gameState.gameBoard[r][c+2] && gameState.gameBoard[r][c+2] && gameState.gameBoard[r][c+2] == gameState.gameBoard[r][c+ 3]) {
+                        //set a winner
+                        gameState.setWinner(r, c);
+                        //save this data to gameState
+                        return;
+                    }
+                }
+            }
+        }
+    },
+    //create a method to declare a winner using the data from gameState.checkForWinner
+    setWinner: function(r, c) {
+        //create a variable for winner and link it to the html element with id: winner
+        let winner = document.getElementById('winner');
+        //if there a win from player one (four red chips in a row)
+        if (gameState.gameBoard[r][c] == playerOne) {
+            //display the text (playerOneDisplayName) Wins!
+            winner.innerText = `${gameState.playerOneDisplayName} Wins!`;
+        //otherwise
+        } else {
+            //display the text (playerTwoDisplayName) Wins!
+            winner.innerText = `${gameState.playerTwoDisplayName} Wins!`;
+        }
+    },
     clear: function () {
         for (let rowNum = 0; rowNum < gameState.gameBoard.length; rowNum++) {
             gameState.gameBoard[rowNum];
@@ -99,10 +124,14 @@ let playerOneInputContainer = document.getElementById('player-one-input-containe
 //      1) change gameState to reflect text of this element
 //      2) change textContent of the element we are displaying
 function displayNameForPlayerOneFunc () {
-    let finalNameSubmission = playerOneNameInputElement.value;
-    gameState.playerOneDisplayName = finalNameSubmission;
-
-    displayPlayerOneNameElement.textContent = `${gameState.playerOneDisplayName}`;
+    if (playerOneNameInputElement.value == '') {
+        gameState.playerOneDisplayName.value = 'Player';
+        displayPlayerOneNameElement.textContent = 'Player';
+    } else {
+        let finalNameSubmission = playerOneNameInputElement.value;
+        gameState.playerOneDisplayName = finalNameSubmission;
+        displayPlayerOneNameElement.textContent = `${gameState.playerOneDisplayName}`;
+    }
     // remove visibility of input container upon submission
     playerOneInputContainer.classList.add('hidden');
     // console.log(playerOneInputContainer.classList);
@@ -150,36 +179,16 @@ function turnFunc (event) {
         // if the current index == null,
         //  
         renderGameBoard();
-        // checkForWinner(); (check each direction using loops for possible win)
+        // gameState.checkForWinner(); 
     } 
 }
 gameBoardContainer.addEventListener('click', turnFunc);
-
-
-
-
-
-
-
-
 
 // RESET BOARD--------------------------------------------------
 let resetGameButton = document.getElementById('reset-bttn')
 resetGameButton.addEventListener('click', gameState.clear)
 
-
-
-
-
-
-
-
-
-
-
-
-
-// CHECK FOR WINNER----------------------------------------------------
+// CHECK FOR WINNER (planning)----------------------------------------------------
 //how to determine a winning condition
 //check horizontally
 // function checkForWinner {
