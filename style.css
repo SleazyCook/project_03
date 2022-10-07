@@ -124,6 +124,11 @@ main {
     display: none;
 }
 
+.reset-container {
+    padding: 1em;
+    text-align: center;
+}
+
 /* Footer for author */
 footer {
     font-family: 'Times New Roman', Times, serif;

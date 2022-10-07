@@ -21,10 +21,6 @@ let gameState =
     playerScores: [0, 0],
     //key: winning conditions
     allWinningConditions: [],
-    //method function: how to move
-    move: function (character, rowNum, colNum) { //position = tableTopGame.move(character, y, x);
-        this.gameBoard[rowNum][colNum] = character;
-    },
     //method function: clear the game baord
     clear: function () {
         for (let rowNum = 0; rowNum < this.gameBoard.length; rowNum++) {
@@ -119,13 +115,11 @@ let playerTwoInputContainer = document.getElementById('player-two-input-containe
 function displayNameForPlayerTwoFunc () {
     if (playerTwoNameInputElement.value == '') {
         gameState.playerTwoDisplayName = 'Computer';
-        console.log(gameState.playerTwoDisplayName)
         displayPlayerTwoNameElement.textContent = `Computer`;
     } else {
         let finalNameSubmission = playerTwoNameInputElement.value;
         gameState.playerTwoDisplayName = finalNameSubmission;
         displayPlayerTwoNameElement.textContent = `${gameState.playerTwoDisplayName}`;
-        console.log(gameState.playerTwoDisplayName)
     }
     playerTwoInputContainer.classList.add('hidden');
     // console.log(playerTwoInputContainer.classList);
@@ -155,5 +149,23 @@ function turnFunc (event) {
     } 
 }
 gameBoardContainer.addEventListener('click', turnFunc);
+
+let resetGameButton = document.getElementById('reset-bttn')
+resetGameButton.addEventListener('click', gameState.clear)
 // continue requirements, write out pseudo 
 // worry about ai player last
+
+//how to determine a winning condition
+//check horizontally
+// function checkForWinner {
+//     for (let row = 0; row < rows; row++) {
+//         for (let col = 0; col< cols; col++) {
+//             if (board[row][col] != '') {
+//                 if (gameStae.gameBoard[row][col] == gameState.gameBoard[row][col+1] && gameState.gameBoard[row][col+1] && gameState.gameBoard[row][col+2] && gameState.gameBoard[row][col+2] == gameState.gameBoard[row][col+3]) {
+//                     setWinner(row, col);
+//                     return;
+//                 }
+//             }
+//         }
+//     }
+// }
