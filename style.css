@@ -90,13 +90,13 @@ main {
     /* border: 5x solid red; */
     justify-content: space-between;
     padding: 0px;
-    column-gap: 5em;
+    column-gap: 0;
 }
 
 .player {
     display: flex;
     flex-direction: column;
-    width: fit-content;
+    width: 200px;
     height: fit-content;
     border: 5px solid white;
     /* align-self: flex-end; */
