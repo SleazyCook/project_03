@@ -1,6 +1,6 @@
 console.log(`Welcome to Connect4
 Developed by Drewford`)
-
+// Game State (Object)
 let gameState = 
 {
     //key: gameboard
@@ -17,7 +17,7 @@ let gameState =
     playerTwoDisplayName: 'two',
     playerOne: 'red',
     playerTwo: 'yellow',
-    currentPlayer: Math.random() > 0.5 ? 'red' : 'yellow', //turnary operator (like if, else)
+    currentPlayer: Math.random() > 0.5 ? 'red' : 'yellow', //ternary operator (like if, else)
     playerScores: [0, 0],
     //key: winning conditions
     allWinningConditions: [],
@@ -38,13 +38,11 @@ let gameState =
     return gameState.gameBoard;
     } 
 }
-
 //domContentLoaded to "install" the slots before the game starts
 // review first function on notes/week03/day14/day.js
 // How to turn your gameState JS into HTML
 // grab the html location to render HTML
 let gameBoardContainer = document.getElementById('board');
-
 // write a function to later callback  when our DOMContentLoaded event occurs
 function renderGameBoard () {
     gameBoardContainer.innerHTML = '';
@@ -85,66 +83,58 @@ function renderGameBoard () {
         gameBoardContainer.appendChild(newRowElement);
     }
 }
-
 //use domContentLoaded event and attach a new event listener to the entire document itself
 //When the DOM is loaded up, call back to the function renderGameBoard
 //   to add the JS elements to HTML when the webpage is loaded for the first time
 document.addEventListener('DOMContentLoaded', renderGameBoard);
 renderGameBoard()
 
-
-
-
-
-/*
-To Do:
-Enter our names and have them displayed
-(two input tags- create input tag through html, toggle to hidden upon completion through js (add a class/display: none) if null is entered, playername is Computer
-use lecture notes ^^ 
-*/
 // -------------------player-one-input-name-----------------------------------------
 let playerOneNameInputElement = document.getElementById('player-one-name-input');
-console.log(playerOneNameInputElement)
 let playerOneSubmitButton = document.getElementById('player-one-submit-bttn');
 let displayPlayerOneNameElement = document.getElementById('player-one-display-name');
+let playerOneInputContainer = document.getElementById('player-one-input-container');
+
 // write a callback function that will 
 //      1) change gameState to reflect text of this element
 //      2) change textContent of the element we are displaying
 function displayNameForPlayerOneFunc () {
     let finalNameSubmission = playerOneNameInputElement.value;
     gameState.playerOneDisplayName = finalNameSubmission;
-    console.log(gameState.playerOneDisplayName)
 
-    displayPlayerOneNameElement.textContent = `Player One: ${gameState.playerOneDisplayName}`;
-}
+    displayPlayerOneNameElement.textContent = `${gameState.playerOneDisplayName}`;
+    // remove visibility of input container upon submission
+    playerOneInputContainer.classList.add('hidden');
+    // console.log(playerOneInputContainer.classList);
+}   
 // attach event listener to submit button that will render our submitted name
 playerOneSubmitButton.addEventListener('click', displayNameForPlayerOneFunc);
+
 // --------------------player-two-input-name------------------------
 let playerTwoNameInputElement = document.getElementById('player-two-name-input');
 let playerTwoSubmitButton = document.getElementById('player-two-submit-bttn');
 let displayPlayerTwoNameElement = document.getElementById('player-two-display-name');
-// write a callback function that will 
-//      1) change gameState to reflect text of this element
-//      2) change textContent of the element we are displaying
+let playerTwoInputContainer = document.getElementById('player-two-input-container');
+
 function displayNameForPlayerTwoFunc () {
-    if (playerTwoNameInputElement == null) {
+    if (playerTwoNameInputElement.value == '') {
         gameState.playerTwoDisplayName = 'Computer';
-        displayPlayerTwoNameElement.textContent = "Player Two: computer";
+        console.log(gameState.playerTwoDisplayName)
+        displayPlayerTwoNameElement.textContent = `Computer`;
     } else {
         let finalNameSubmission = playerTwoNameInputElement.value;
         gameState.playerTwoDisplayName = finalNameSubmission;
-        displayPlayerTwoNameElement.textContent = `Player Two: ${gameState.playerTwoDisplayName}`;
+        displayPlayerTwoNameElement.textContent = `${gameState.playerTwoDisplayName}`;
+        console.log(gameState.playerTwoDisplayName)
     }
+    playerTwoInputContainer.classList.add('hidden');
+    // console.log(playerTwoInputContainer.classList);
 }
 // attach event listener to submit button that will render our submitted name
 playerTwoSubmitButton.addEventListener('click', displayNameForPlayerTwoFunc);
 
-
-/*
-
-2- random starting order (completed in gameState)
-
-3 - take turns by dropping our chip into a column on the grid */
+// TURN ORDER--------------------------------------------------------
+// take turns by dropping our chip into a column on the grid 
 function turnFunc (event) {
     //asdfasf
     if (event.target.classList[0] == 'col') {
@@ -166,4 +156,4 @@ function turnFunc (event) {
 }
 gameBoardContainer.addEventListener('click', turnFunc);
 // continue requirements, write out pseudo 
-// worry about ai player
+// worry about ai player last

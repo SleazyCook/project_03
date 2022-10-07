@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Permanent+Marker&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 body {
     background-color: #5a83a3;
@@ -8,7 +9,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 110vh;
 }
 
 /* Title Header */
@@ -17,7 +18,7 @@ header {
     color: white;
     background-color: black;
     padding: 0 1em 0 1em;
-    margin: 1em;
+    margin-top: -2em;
     border: 7px solid white;
     border-radius: 1em;
     max-width: fit-content;
@@ -89,18 +90,57 @@ main {
     height: fit-content;
     /* border: 5x solid red; */
     justify-content: space-between;
-    padding: 0px;
-    column-gap: 0;
+    padding: 0 2.8em 0 2.8em;
+    column-gap: 3.8em;
 }
 
 .player {
     display: flex;
+    font-family: 'Anton';
     flex-direction: column;
     width: 200px;
     height: fit-content;
-    border: 5px solid white;
-    /* align-self: flex-end; */
+    background-color: rgb(173, 190, 196);
+    border: 8px solid rgb(4, 4, 116);
+    padding: 0 1em 0 1em;
 }
+
+.name-input-container {
+    text-align: center;
+    margin-top: 1em;
+}
+
+#player-one-display-name {
+    font-family: 'Permanent Marker';
+    font-size: larger;
+}
+
+#player-two-display-name {
+    font-family: 'Permanent Marker';
+    font-size: larger;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Footer for author */
+footer {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    color: lightblue;
+    /* margin-top: 2em;; */
+}
+
+#author {
+    font-family: 'Berkshire Swash';
+}
+
+a {
+    text-decoration: none;
+    color: lightblue;
+}
+
 /* ------------------------------ */
 /* media query for mobile screen */
 @media all and (max-width: 800px) {
@@ -116,20 +156,3 @@ main {
     }
 }
 /* ------------------------------ */
-
-/* Footer for author */
-footer {
-    font-family: 'Times New Roman', Times, serif;
-    text-align: center;
-    color: lightblue;
-    margin-top: 2em;;
-}
-
-#author {
-    font-family: 'Berkshire Swash';
-}
-
-a {
-    text-decoration: none;
-    color: lightblue;
-}
