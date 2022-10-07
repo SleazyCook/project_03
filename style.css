@@ -123,6 +123,8 @@ main {
     height: fit-content;
     background-color: rgb(173, 190, 196);
     border: 8px solid rgb(4, 4, 116);
+    border-radius: 10%;
+    margin-top: -0.5em;
     padding: 0 1em 0 1em;
 }
 

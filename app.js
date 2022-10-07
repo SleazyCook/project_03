@@ -1,6 +1,6 @@
 console.log(`Welcome to Connect4
 Developed by Drewford`)
-// Game State (Object)
+// GAME STATE-------------------------------------------------------
 let gameState = 
 {
     //key: gameboard
@@ -34,10 +34,8 @@ let gameState =
     return gameState.gameBoard;
     } 
 }
-//domContentLoaded to "install" the slots before the game starts
-// review first function on notes/week03/day14/day.js
-// How to turn your gameState JS into HTML
-// grab the html location to render HTML
+
+// RENDER THE BOARD------------------------------------------------
 let gameBoardContainer = document.getElementById('board');
 // write a function to later callback  when our DOMContentLoaded event occurs
 function renderGameBoard () {
@@ -85,7 +83,7 @@ function renderGameBoard () {
 document.addEventListener('DOMContentLoaded', renderGameBoard);
 renderGameBoard()
 
-// -------------------player-one-input-name-----------------------------------------
+// PLAYER ONE INPUT NAME------------------------------------------
 let playerOneNameInputElement = document.getElementById('player-one-name-input');
 let playerOneSubmitButton = document.getElementById('player-one-submit-bttn');
 let displayPlayerOneNameElement = document.getElementById('player-one-display-name');
@@ -106,7 +104,7 @@ function displayNameForPlayerOneFunc () {
 // attach event listener to submit button that will render our submitted name
 playerOneSubmitButton.addEventListener('click', displayNameForPlayerOneFunc);
 
-// --------------------player-two-input-name------------------------
+// PLAYER TWO INPUT NAME---------------------------------------------
 let playerTwoNameInputElement = document.getElementById('player-two-name-input');
 let playerTwoSubmitButton = document.getElementById('player-two-submit-bttn');
 let displayPlayerTwoNameElement = document.getElementById('player-two-display-name');
@@ -150,14 +148,11 @@ function turnFunc (event) {
 }
 gameBoardContainer.addEventListener('click', turnFunc);
 
-// -------------reset-board---------------------------------
+// RESET BOARD--------------------------------------------------
 let resetGameButton = document.getElementById('reset-bttn')
 resetGameButton.addEventListener('click', gameState.clear)
 
-
-// continue requirements, write out pseudo 
-// worry about ai player last
-
+// CHECK FOR WINNER----------------------------------------------------
 //how to determine a winning condition
 //check horizontally
 // function checkForWinner {
@@ -172,3 +167,7 @@ resetGameButton.addEventListener('click', gameState.clear)
 //         }
 //     }
 // }
+
+
+// continue requirements, write out pseudo 
+// worry about ai player last
