@@ -21,50 +21,51 @@ let gameState =
     playerScores: [0, 0],
     //key: winning conditions
     checkForWinner: function () {
+        
         //horizontally loop through the rows
-        for (let r = 0; r < rows; r++) {
+        for (let r = 0; r < gameState.gameBoard.length; r++) {
+            let currClass = gameState.currentPlayer // if player one, then currClass = red (and then) if player two, then currClass = yellow
             // loop through the cells in each row
-            for (let c = 0; c < columns; c++) {
-                // if the current cell isn't empty (null)
-                if (gameState.gameBoard[r][c] != null) {
-                    //and if 4 in a row match (either red or yellow)
-                    let currCell = gameState.gameBoard[r][c] 
-                    if (currCell == gameState.gameBoard[r][c+1] && gameState.gameBoard[r][c++] == gameState.gameBoard[r][c+2] && gameState.gameBoard[r][c+2] == gameState.gameBoard[r][c+ 3]) {
-                        //set a winner
-                        gameState.setWinner(r, c);
-                        //save this data to gameState
-                        return;
+            let counter = 0;
+            console.log(counter);
+            for (let c = 0; c < gameState.gameBoard[r].length; c++) {
+                if (gameState.gameBoard[r][c] == currClass) {
+                    counter++
+                } else {
+                    counter = 0;
+                }
+                if (counter == 4) {
+                    gameState.setWinner(currClass);
+                    break;
+                }
+                }
+            }
+        },
+        setWinner: function(winningClass) {
+            //create a variable for winner and link it to the html element with id: winner
+            let winner = document.getElementById('winner');
+            //if there a win from player one (four red chips in a row)
+            if (winningClass == 'red') {
+                //display the text (playerOneDisplayName) Wins!
+                winner.innerText = `${gameState.playerOneDisplayName} Wins!`;
+            //otherwise
+            } else {
+                //display the text (playerTwoDisplayName) Wins!
+                winner.innerText = `${gameState.playerTwoDisplayName} Wins!`;
+            }
+        },
+        clear: function () {
+            for (let rowNum = 0; rowNum < gameState.gameBoard.length; rowNum++) {
+                gameState.gameBoard[rowNum];
+                for (let colNum = 0; colNum < gameState.gameBoard[rowNum].length; colNum++) {
+                    if (gameState.gameBoard[rowNum][colNum] != null) {
+                        gameState.gameBoard[rowNum][colNum] = null;
                     }
                 }
             }
-        }
-    },
-    //create a method to declare a winner using the data from gameState.checkForWinner
-    setWinner: function(r, c) {
-        //create a variable for winner and link it to the html element with id: winner
-        let winner = document.getElementById('winner');
-        //if there a win from player one (four red chips in a row)
-        if (gameState.gameBoard[r][c] == playerOne) {
-            //display the text (playerOneDisplayName) Wins!
-            winner.innerText = `${gameState.playerOneDisplayName} Wins!`;
-        //otherwise
-        } else {
-            //display the text (playerTwoDisplayName) Wins!
-            winner.innerText = `${gameState.playerTwoDisplayName} Wins!`;
-        }
-    },
-    clear: function () {
-        for (let rowNum = 0; rowNum < gameState.gameBoard.length; rowNum++) {
-            gameState.gameBoard[rowNum];
-            for (let colNum = 0; colNum < gameState.gameBoard[rowNum].length; colNum++) {
-                if (gameState.gameBoard[rowNum][colNum] != null) {
-                    gameState.gameBoard[rowNum][colNum] = null;
-                }
-            }
-        }
-    renderGameBoard();
-    return gameState.gameBoard;
-    } 
+        renderGameBoard();
+        return gameState.gameBoard;
+        } 
 }
 
 // RENDER THE BOARD------------------------------------------------
@@ -126,7 +127,7 @@ let playerOneInputContainer = document.getElementById('player-one-input-containe
 //      2) change textContent of the element we are displaying
 function displayNameForPlayerOneFunc () {
     if (playerOneNameInputElement.value == '') {
-        gameState.playerOneDisplayName.value = 'Player';
+        gameState.playerOneDisplayName = 'Player';
         displayPlayerOneNameElement.textContent = 'Player';
     } else {
         let finalNameSubmission = playerOneNameInputElement.value;
@@ -168,19 +169,21 @@ function turnFunc (event) {
     if (event.target.classList[0] == 'col') {
         let colIndexStr = event.target.classList[1];
         let colIndex = Number(colIndexStr[4]); //use Number() to convert string to number, use index to remove "col-"
-        console.log(colIndex);
         //loop through the row index
         for (let i = gameState.gameBoard.length - 1; i >= 0; i--) {
             if (gameState.gameBoard[i][colIndex] == null) {
                 gameState.gameBoard[i][colIndex] = gameState.currentPlayer;
+                gameState.checkForWinner(); 
                 gameState.currentPlayer = gameState.currentPlayer == 'yellow' ? 'red' : 'yellow';
+                //if yellow/playertwo is called "Computer" call the computer function
+                //picks a random num between 0 and 6 (Math.random)
+                // for loop to find the first null loop (within a col)
                 break;
             }
         }
         // if the current index == null,
         //  
         renderGameBoard();
-        gameState.checkForWinner(); 
     } 
 }
 gameBoardContainer.addEventListener('click', turnFunc);
