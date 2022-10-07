@@ -78,11 +78,15 @@ function renderGameBoard () {
             // add an identifying class to each column
             newColElement.classList.add('col-' + numOfColsMade);
             // if the current cell from the game board is anything over than 'null'...
-            if (currentJSRow[numOfColsMade] != null) {
+            if (currentJSRow[numOfColsMade] == 'red') {
                 // use the content provided by the game baord
-                newColElement.textContent = currentJSRow[numOfColsMade];
+                // newColElement.textContent = currentJSRow[numOfColsMade];
+                newColElement.classList.add('red')
                 // otherwise...
-            } else {
+            } else if (currentJSRow[numOfColsMade] == 'yellow') {
+                // newColElement.textContent = currentJSRow[numOfColsMade];
+                newColElement.classList.add('yellow')
+                } else {
                 //use the content 'Empty'
                 newColElement.textContent = '';
             }
@@ -139,4 +143,4 @@ function turnFunc (event) {
 }
 gameBoardContainer.addEventListener('click', turnFunc);
 // continue requirements, write out pseudo 
-// worry about ai player last
+// worry about ai player
