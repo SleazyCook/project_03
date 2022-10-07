@@ -45,16 +45,6 @@ main {
     color: white;
 }
 
-#player-one-display-name {
-    font-family: 'Permanent Marker';
-    font-size: larger;
-}
-
-#player-two-display-name {
-    font-family: 'Permanent Marker';
-    font-size: larger;
-}
-
 .hidden {
     display: none;
 }
@@ -118,15 +108,32 @@ main {
 .player {
     display: flex;
     font-family: 'Anton';
+    color: white;
     text-align: center;
     flex-direction: column;
     width: 200px;
     height: fit-content;
-    background-color: rgb(173, 190, 196);
-    border: 8px solid rgb(4, 4, 116);
-    border-radius: 10%;
-    margin-top: -0.5em;
+    background-color: black;
+    border: 7px solid white;
+    border-radius: 1em;
+    margin-top: 1em;
     padding: 0 1em 0 1em;
+}
+
+#lightblue-text {
+    color: lightblue
+}
+
+#player-one-display-name {
+    font-family: 'Permanent Marker';
+    color: red;
+    font-size: larger;
+}
+
+#player-two-display-name {
+    font-family: 'Permanent Marker';
+    color: red;
+    font-size: larger;
 }
 
 .reset-container {
