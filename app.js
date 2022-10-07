@@ -20,7 +20,12 @@ let gameState =
     currentPlayer: Math.random() > 0.5 ? 'red' : 'yellow', //ternary operator (like if, else)
     playerScores: [0, 0],
     //key: winning conditions
-    allWinningConditions: [],
+    // checkLine: function(a, b, c, d) {
+    //     return ((a))
+    // }
+    // checkForWinner: function () {
+
+    // }
     //method function: clear the game baord
     clear: function () {
         for (let rowNum = 0; rowNum < gameState.gameBoard.length; rowNum++) {
