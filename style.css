@@ -18,6 +18,7 @@ header {
     font-family: 'Anton';
     color: white;
     background-color: black;
+    margin-top: 1em;
     padding: 0 1em 0 1em;
     border: 7px solid white;
     border-radius: 1em;
@@ -120,6 +121,7 @@ main {
 
     .players-box {
         flex-direction: column;
+        align-items: center;
     }
 
     footer {
@@ -135,10 +137,9 @@ main {
     /* flex-direction: column; */
     width: fit-content;
     height: fit-content;
-    /* border: 5x solid red; */
-    justify-content: space-between;
     padding: 0 2.8em 0 2.8em;
     column-gap: 3.8em;
+
 }
 
 .player {
