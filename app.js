@@ -17,6 +17,8 @@ let gameState =
     playerTwoDisplayName: 'two',
     playerOne: 'red',
     playerTwo: 'yellow',
+    playerOneScore: 0,
+    playerTwoScore: 0,
     currentPlayer: Math.random() > 0.5 ? 'red' : 'yellow', //ternary operator (like if, else)
     playerScores: [0, 0],
     //key: winning conditions
@@ -49,11 +51,16 @@ let gameState =
                 //display the text (playerOneDisplayName) Wins!
                 winner.classList.remove('hidden');
                 winner.innerText = `${gameState.playerOneDisplayName} Wins!`;
-                let playerOneScore = document.getElementById('')
+                gameState.playerOneScore++;
+                let playerOneScoreDisplay = document.getElementById('player-one-score');
+                playerOneScoreDisplay.innerText = gameState.playerOneScore
             //otherwise
             } else {
                 //display the text (playerTwoDisplayName) Wins!
                 winner.innerText = `${gameState.playerTwoDisplayName} Wins!`;
+                gameState.playerTwoScore++;
+                let playerTwoScoreDisplay = document.getElementById('player-two-score');
+                playerTwoScoreDisplay.innerText = gameState.playerTwoScore;
             }
         },
         clear: function () {
