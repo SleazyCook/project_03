@@ -47,7 +47,9 @@ let gameState =
             //if there a win from player one (four red chips in a row)
             if (winningClass == 'red') {
                 //display the text (playerOneDisplayName) Wins!
+                winner.classList.remove('hidden');
                 winner.innerText = `${gameState.playerOneDisplayName} Wins!`;
+                let playerOneScore = document.getElementById('')
             //otherwise
             } else {
                 //display the text (playerTwoDisplayName) Wins!
@@ -64,6 +66,7 @@ let gameState =
                 }
             }
         renderGameBoard();
+        winner.classList.add('hidden');
         return gameState.gameBoard;
         } 
 }
@@ -191,23 +194,6 @@ gameBoardContainer.addEventListener('click', turnFunc);
 // RESET BOARD--------------------------------------------------
 let resetGameButton = document.getElementById('reset-bttn')
 resetGameButton.addEventListener('click', gameState.clear)
-
-// CHECK FOR WINNER (planning)----------------------------------------------------
-//how to determine a winning condition
-//check horizontally
-// function checkForWinner {
-//     for (let row = 0; row < rows; row++) {
-//         for (let col = 0; col< cols; col++) {
-//             if (board[row][col] != '') {
-//                 if (gameStae.gameBoard[row][col] == gameState.gameBoard[row][col+1] && gameState.gameBoard[row][col+1] && gameState.gameBoard[row][col+2] && gameState.gameBoard[row][col+2] == gameState.gameBoard[row][col+3]) {
-//                     setWinner(row, col);
-//                     return;
-//                 }
-//             }
-//         }
-//     }
-// }
-
 
 // continue requirements, write out pseudo 
 // worry about ai player last
