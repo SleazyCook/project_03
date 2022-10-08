@@ -20,6 +20,11 @@ let gameState =
     playerOneScore: 0,
     playerTwoScore: 0,
     currentPlayer: Math.random() > 0.5 ? 'red' : 'yellow', //ternary operator (like if, else)
+    //create current player display. call the function in turn order function
+    // firstPlayer: function() {
+    //     let displayFirstPlayer = document.getElementById('who-goes-first');
+    //     displayFirstPlayer.FirstPlayer.innerText = `${currentPlayer} plays first`
+    // },
     playerScores: [0, 0],
     //key: winning conditions
     checkForWinner: function () {
@@ -29,7 +34,7 @@ let gameState =
             let currClass = gameState.currentPlayer // if player one, then currClass = red (and then) if player two, then currClass = yellow
             // loop through the cells in each row
             let counter = 0;
-            console.log(counter);
+            // console.log(counter);
             for (let c = 0; c < gameState.gameBoard[r].length; c++) {
                 if (gameState.gameBoard[r][c] == currClass) {
                     counter++
@@ -57,6 +62,7 @@ let gameState =
             //otherwise
             } else {
                 //display the text (playerTwoDisplayName) Wins!
+                winner.classList.remove('hidden');
                 winner.innerText = `${gameState.playerTwoDisplayName} Wins!`;
                 gameState.playerTwoScore++;
                 let playerTwoScoreDisplay = document.getElementById('player-two-score');
@@ -175,6 +181,7 @@ playerTwoSubmitButton.addEventListener('click', displayNameForPlayerTwoFunc);
 // TURN ORDER--------------------------------------------------------
 // take turns by dropping our chip into a column on the grid 
 function turnFunc (event) {
+    // gameState.firstPlayer();
     //asdfasf
     if (event.target.classList[0] == 'col') {
         let colIndexStr = event.target.classList[1];
@@ -201,6 +208,43 @@ gameBoardContainer.addEventListener('click', turnFunc);
 // RESET BOARD--------------------------------------------------
 let resetGameButton = document.getElementById('reset-bttn')
 resetGameButton.addEventListener('click', gameState.clear)
+
+//COMPUTER TURN--------------------------------------------------
+// if the playertwo name is 'Computer
+// place a chip in one of the 7 columns
+//Math.random() * 6
+
+
+//COMPUTER TRY TO WIN--------------------------------------------
+// function computer {
+//     if ( currentPlayer == 'yellow' && playerTwoDisplayName == 'Computer')
+//     //Math.floor(Math.random() * 6 cols)
+
+// }
+
+/*
+{
+        
+    //horizontally loop through the rows
+    for (let r = 0; r < gameState.gameBoard.length; r++) {
+        let currClass = gameState.currentPlayer // if player one, then currClass = red (and then) if player two, then currClass = yellow
+        // loop through the cells in each row
+        let counter = 0;
+        // console.log(counter);
+        for (let c = 0; c < gameState.gameBoard[r].length; c++) {
+            if (gameState.gameBoard[r][c] == currClass) {
+                counter++
+            } else {
+                counter = 0;
+            }
+            if (counter == 4) {
+                gameState.setWinner(currClass);
+                break;
+            }
+            }
+        }
+    },
+*/
 
 // continue requirements, write out pseudo 
 // worry about ai player last

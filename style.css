@@ -69,7 +69,7 @@ main {
     align-items: center;
     height: 540px;
     width: 630px;
-    background-color: blue;
+    background-color: rgb(1, 1, 143);
     row-gap: 0px;
     column-gap: 0px;
 }
