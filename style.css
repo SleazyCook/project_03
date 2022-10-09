@@ -60,6 +60,11 @@ main {
     justify-content: center;;
 }
 
+#who-goes-first {
+    color: white;
+    text-align: center;
+}
+
 /* Game Board */
 #board {
     border: 5px solid rgb(4, 4, 116);

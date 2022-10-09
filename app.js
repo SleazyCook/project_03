@@ -20,11 +20,6 @@ let gameState =
     playerOneScore: 0,
     playerTwoScore: 0,
     currentPlayer: Math.random() > 0.5 ? 'red' : 'yellow', //ternary operator (like if, else)
-    //create current player display. call the function in turn order function
-    // firstPlayer: function() {
-    //     let displayFirstPlayer = document.getElementById('who-goes-first');
-    //     displayFirstPlayer.FirstPlayer.innerText = `${currentPlayer} plays first`
-    // },
     playerScores: [0, 0],
     //key: winning conditions
     checkForWinner: function () {
@@ -80,8 +75,19 @@ let gameState =
             }
         renderGameBoard();
         winner.classList.add('hidden');
+        displayCurrentPlayer.classList.remove('hidden')
         return gameState.gameBoard;
         } 
+}
+
+//DISPLAY CURRENT PLAYER------------------------------------------
+function whoIsPlaying() {
+    let displayCurrentPlayer = document.getElementById('who-goes-first');
+    if (gameState.currentPlayer == 'red') {
+        displayCurrentPlayer.innerText = `${gameState.playerOneDisplayName}'s turn`
+    } else {
+        displayCurrentPlayer.innerText = `${gameState.playerTwoDisplayName}'s turn`
+    }
 }
 
 // RENDER THE BOARD------------------------------------------------
@@ -124,7 +130,9 @@ function renderGameBoard () {
         }
         //append row element to board element
         gameBoardContainer.appendChild(newRowElement);
-    }
+        whoIsPlaying();
+        console.log(whoIsPlaying)
+    } 
 }
 //use domContentLoaded event and attach a new event listener to the entire document itself
 //When the DOM is loaded up, call back to the function renderGameBoard
