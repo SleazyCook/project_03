@@ -13,8 +13,8 @@ let gameState =
         [null, null, null, null, null, null, null],
     ],
     //key: players
-    playerOneDisplayName: 'one',
-    playerTwoDisplayName: 'two',
+    playerOneDisplayName: 'Player One',
+    playerTwoDisplayName: 'Player Two',
     playerOne: 'red',
     playerTwo: 'yellow',
     playerOneScore: 0,
@@ -29,10 +29,10 @@ let gameState =
             let currClass = gameState.currentPlayer // if player one, then currClass = red (and then) if player two, then currClass = yellow
             // loop through the cells in each row
             let counter = 0;
-            // console.log(counter);
+            // horizontal check
             for (let c = 0; c < gameState.gameBoard[r].length; c++) {
                 if (gameState.gameBoard[r][c] == currClass) {
-                    counter++
+                    counter++;
                 } else {
                     counter = 0;
                 }
@@ -41,6 +41,20 @@ let gameState =
                     break;
                 }
                 }
+            //VERTICAL - doesn't work
+            // loop through each row and check if the cell in the row BELOW matches
+            // for (let c = 0; c < gameState.gameBoard[c].length; c++) {
+            //     console.log('hello')
+            //     if (gameState.gameBoard[r][c] == currClass) {
+            //         counter++;
+            //     } else {
+            //         counter = 0;
+            //     }
+            //     if (counter == 4) {
+            //         gameState.setWinner(currClass);
+            //         break;
+            //     }
+            // }
             }
         },
         setWinner: function(winningClass) {
@@ -131,7 +145,6 @@ function renderGameBoard () {
         //append row element to board element
         gameBoardContainer.appendChild(newRowElement);
         whoIsPlaying();
-        console.log(whoIsPlaying)
     } 
 }
 //use domContentLoaded event and attach a new event listener to the entire document itself
@@ -190,7 +203,6 @@ playerTwoSubmitButton.addEventListener('click', displayNameForPlayerTwoFunc);
 // take turns by dropping our chip into a column on the grid 
 function turnFunc (event) {
     // gameState.firstPlayer();
-    //asdfasf
     if (event.target.classList[0] == 'col') {
         let colIndexStr = event.target.classList[1];
         let colIndex = Number(colIndexStr[4]); //use Number() to convert string to number, use index to remove "col-"

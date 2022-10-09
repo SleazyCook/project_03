@@ -63,6 +63,8 @@ main {
 #who-goes-first {
     color: white;
     text-align: center;
+    font-size: larger;
+    margin-bottom: 0.5em;
 }
 
 /* Game Board */
