@@ -67,6 +67,12 @@ main {
     margin-bottom: 0.5em;
 }
 
+.input-bttn {
+    border-radius: 5px;
+    background-color: rgb(96, 201, 236);
+    color: white;
+}
+
 /* Game Board */
 #board {
     border: 5px solid rgb(4, 4, 116);
@@ -182,7 +188,7 @@ main {
 #player-two-display-name {
     font-family: 'Permanent Marker';
     color: yellow;
-    font-size: larger;
+    font-size: larger; 
 }
 
 .reset-container {
