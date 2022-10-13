@@ -25,6 +25,7 @@ let gameState =
     checkForWinner: function () {
         let currClass = gameState.currentPlayer
         //horizontally loop through the rows
+        // HORIZONTAL CHECK
         for (let r = 0; r < gameState.gameBoard.length; r++) {
              // if player one, then currClass = red (and then) if player two, then currClass = yellow
             // loop through the cells in each row
@@ -38,12 +39,12 @@ let gameState =
                 }
                 if (counter == 4) {
                     gameState.setWinner(currClass);
-                    break;
+                    return true; //return will end the function here. 
                 }
                 }
         }
-            // VERTICAL - doesn't work
-            // loop through each row and check if the cell in the row BELOW matches
+        // VERTICAL CHECK
+        // same function as horizontal, but switch the nested loops so column is checked first
         for (let c = 0; c < gameState.gameBoard.length; c++) {
                 let counter = 0;
                 for (let r = 0; r < gameState.gameBoard.length; r++) {
@@ -54,22 +55,48 @@ let gameState =
                     }
                     if (counter == 4) {
                         gameState.setWinner(currClass);
-                        break;
+                        return true;
                     }
                 }
             }
-        },
-        setWinner: function(winningClass) {
-            //create a variable for winner and link it to the html element with id: winner
-            let winner = document.getElementById('winner');
-            //if there a win from player one (four red chips in a row)
-            if (winningClass == 'red') {
-                //display the text (playerOneDisplayName) Wins!
-                winner.classList.remove('hidden');
-                winner.innerText = `${gameState.playerOneDisplayName} Wins!`;
-                gameState.playerOneScore++;
-                let playerOneScoreDisplay = document.getElementById('player-one-score');
-                playerOneScoreDisplay.innerText = gameState.playerOneScore
+        // DIAGONAL DOWN RIGHT CHECK
+        for (let r = 0; r < 3; r++) {
+            for (let c = 0; c < 4; c++){ 
+                if (gameState.gameBoard [r][c] == currClass){
+                    if (gameState.gameBoard[r][c] == gameState.gameBoard[r + 1][c + 1] 
+                        && gameState.gameBoard [r + 1][c+ 1] == gameState.gameBoard[r + 2][c + 2] 
+                        && gameState.gameBoard[r + 2][c + 2] == gameState.gameBoard[r + 3][c + 3]){
+                            gameState.setWinner(currClass);
+                            return true; 
+                    }
+                }
+            }
+        }
+        // DIAGONAL DOWN LEFT CHECK
+        for (let r = 0; r < 3; r++) {
+            for (let c = gameState.gameBoard[0].length - 1; c >= 3; c--){ 
+                if (gameState.gameBoard[r][c] == currClass){
+                    if (gameState.gameBoard[r][c] == gameState.gameBoard[r + 1][c - 1] 
+                        && gameState.gameBoard [r + 1][c - 1] == gameState.gameBoard[r + 2][c - 2] 
+                        && gameState.gameBoard [r + 2][c - 2] == gameState.gameBoard[r + 3][c - 3]){
+                        gameState.setWinner(currClass);
+                        return true;
+                    }
+                }
+            }
+        }
+    },
+    setWinner: function(winningClass) {
+        //create a variable for winner and link it to the html element with id: winner
+        let winner = document.getElementById('winner');
+        //if there a win from player one (four red chips in a row)
+        if (winningClass == 'red') {
+            //display the text (playerOneDisplayName) Wins!
+            winner.classList.remove('hidden');
+            winner.innerText = `${gameState.playerOneDisplayName} Wins!`;
+            gameState.playerOneScore++;
+            let playerOneScoreDisplay = document.getElementById('player-one-score');
+            playerOneScoreDisplay.innerText = gameState.playerOneScore
             //otherwise
             } else {
                 //display the text (playerTwoDisplayName) Wins!
@@ -79,21 +106,21 @@ let gameState =
                 let playerTwoScoreDisplay = document.getElementById('player-two-score');
                 playerTwoScoreDisplay.innerText = gameState.playerTwoScore;
             }
-        },
-        clear: function () {
-            for (let rowNum = 0; rowNum < gameState.gameBoard.length; rowNum++) {
-                gameState.gameBoard[rowNum];
-                for (let colNum = 0; colNum < gameState.gameBoard[rowNum].length; colNum++) {
-                    if (gameState.gameBoard[rowNum][colNum] != null) {
-                        gameState.gameBoard[rowNum][colNum] = null;
-                    }
+    },
+    clear: function () {
+        for (let rowNum = 0; rowNum < gameState.gameBoard.length; rowNum++) {
+            gameState.gameBoard[rowNum];
+            for (let colNum = 0; colNum < gameState.gameBoard[rowNum].length; colNum++) {
+                if (gameState.gameBoard[rowNum][colNum] != null) {
+                    gameState.gameBoard[rowNum][colNum] = null;
                 }
             }
-        renderGameBoard();
+        }
+    renderGameBoard();
         winner.classList.add('hidden');
         displayCurrentPlayer.classList.remove('hidden');
         return gameState.gameBoard;
-        } 
+    } 
 }
 
 //DISPLAY CURRENT PLAYER------------------------------------------
@@ -228,43 +255,3 @@ gameBoardContainer.addEventListener('click', turnFunc);
 // RESET BOARD--------------------------------------------------
 let resetGameButton = document.getElementById('reset-bttn')
 resetGameButton.addEventListener('click', gameState.clear)
-
-//COMPUTER TURN--------------------------------------------------
-// if the playertwo name is 'Computer
-// place a chip in one of the 7 columns
-//Math.random() * 6
-
-
-//COMPUTER TRY TO WIN--------------------------------------------
-// function computer {
-//     if ( currentPlayer == 'yellow' && playerTwoDisplayName == 'Computer')
-//     //Math.floor(Math.random() * 6 cols)
-
-// }
-
-/*
-{
-        
-    //horizontally loop through the rows
-    for (let r = 0; r < gameState.gameBoard.length; r++) {
-        let currClass = gameState.currentPlayer // if player one, then currClass = red (and then) if player two, then currClass = yellow
-        // loop through the cells in each row
-        let counter = 0;
-        // console.log(counter);
-        for (let c = 0; c < gameState.gameBoard[r].length; c++) {
-            if (gameState.gameBoard[r][c] == currClass) {
-                counter++
-            } else {
-                counter = 0;
-            }
-            if (counter == 4) {
-                gameState.setWinner(currClass);
-                break;
-            }
-            }
-        }
-    },
-*/
-
-// continue requirements, write out pseudo 
-// worry about ai player last
