@@ -241,7 +241,9 @@ function turnFunc (event) {
                 gameState.gameBoard[i][colIndex] = gameState.currentPlayer;
                 gameState.checkForWinner(); 
                 gameState.currentPlayer = gameState.currentPlayer == 'yellow' ? 'red' : 'yellow';
-                // gameState.currentPlayer = gameState.currentPlayer == 'yellow' && playerTwoDisplayName == "Computer" ? turnFunc() : 'player2';
+                // if (gameState.currentPlayer == 'yellow' && gameState.playerTwoDisplayName == 'Computer') {
+                //     computerFunc();
+                // }
                 break;
             }
         }
