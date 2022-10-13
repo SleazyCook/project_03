@@ -23,10 +23,10 @@ let gameState =
     playerScores: [0, 0],
     //key: winning conditions
     checkForWinner: function () {
-        
+        let currClass = gameState.currentPlayer
         //horizontally loop through the rows
         for (let r = 0; r < gameState.gameBoard.length; r++) {
-            let currClass = gameState.currentPlayer // if player one, then currClass = red (and then) if player two, then currClass = yellow
+             // if player one, then currClass = red (and then) if player two, then currClass = yellow
             // loop through the cells in each row
             let counter = 0;
             // horizontal check
@@ -41,20 +41,22 @@ let gameState =
                     break;
                 }
                 }
-            //VERTICAL - doesn't work
+        }
+            // VERTICAL - doesn't work
             // loop through each row and check if the cell in the row BELOW matches
-            // for (let c = 0; c < gameState.gameBoard[c].length; c++) {
-            //     console.log('hello')
-            //     if (gameState.gameBoard[r][c] == currClass) {
-            //         counter++;
-            //     } else {
-            //         counter = 0;
-            //     }
-            //     if (counter == 4) {
-            //         gameState.setWinner(currClass);
-            //         break;
-            //     }
-            // }
+        for (let c = 0; c < gameState.gameBoard.length; c++) {
+                let counter = 0;
+                for (let r = 0; r < gameState.gameBoard.length; r++) {
+                    if (gameState.gameBoard[r][c] == currClass) {
+                        counter++;
+                    } else {
+                        counter = 0;
+                    }
+                    if (counter == 4) {
+                        gameState.setWinner(currClass);
+                        break;
+                    }
+                }
             }
         },
         setWinner: function(winningClass) {
@@ -89,7 +91,7 @@ let gameState =
             }
         renderGameBoard();
         winner.classList.add('hidden');
-        displayCurrentPlayer.classList.remove('hidden')
+        displayCurrentPlayer.classList.remove('hidden');
         return gameState.gameBoard;
         } 
 }
@@ -212,9 +214,7 @@ function turnFunc (event) {
                 gameState.gameBoard[i][colIndex] = gameState.currentPlayer;
                 gameState.checkForWinner(); 
                 gameState.currentPlayer = gameState.currentPlayer == 'yellow' ? 'red' : 'yellow';
-                //if yellow/playertwo is called "Computer" call the computer function
-                //picks a random num between 0 and 6 (Math.random)
-                // for loop to find the first null loop (within a col)
+                // gameState.currentPlayer = gameState.currentPlayer == 'yellow' && playerTwoDisplayName == "Computer" ? turnFunc() : 'player2';
                 break;
             }
         }
